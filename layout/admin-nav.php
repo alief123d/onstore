@@ -61,7 +61,7 @@
 </body>
 <?php
 if(isset($_POST['back'])) {
-    echo "<script>window.location='../../indexx.php?page=admin';</script>";
+    echo "<script>window.location='../../index/indexx.php?page=admin';</script>";
 }
 ?>
 </html>

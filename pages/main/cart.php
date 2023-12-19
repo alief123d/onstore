@@ -7,6 +7,9 @@
     <title>Document</title>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css' />
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' />
+    <style>
+        
+    </style>
 </head>
 
 <body>
@@ -16,13 +19,13 @@
     <!-- cart content -->
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-10">
+            <div class="col-lg-10 col-md-6 col-lg-4">
                 <div class="table-responsive mt-2">
                     <table class="table table-bordered table-striped text-center">
                         <thead>
                             <tr>
                                 <td colspan="7">
-                                    <h4 class="text-center text-info m-0">Products in your cart!</h4>
+                                    <h4 class="text-center text-info m-0 font-weight-normal">Products in your cart!</h4>
                                 </td>
                             </tr>
                             <tr>
@@ -32,7 +35,7 @@
                                 <th>Price</th>
                                 <th>Total Price</th>
                                 <th>
-                                    <a href="../menu/default.php?acts=delete-all" class="badge-danger badge p-1" onclick="return confirm('Are you sure want to clear your cart?');"><i class="fas fa-trash"></i>&nbsp;&nbsp;Clear Cart</a>
+                                    <a href="../menu/default.php?acts=delete-all" class=" d-sm-inline-block badge-danger badge p-1" onclick="return confirm('Are you sure want to clear your cart?');"><i class="fas fa-trash"></i>&nbsp;&nbsp;Clear Cart</a>
                                 </th>
                             </tr>
                         </thead>
@@ -108,8 +111,8 @@
                                 <?php $grand_total += $row['total_price']; ?>
                             <?php endwhile; ?>
                             <tr>
-                                <td colspan="3">
-                                    <a href="../../indexx.php?page=home page" class="btn btn-success"><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Continue
+                                <td class="back-home" colspan="3">
+                                    <a href="../../index/indexx.php?page=home page" class="btn btn-success btn-block btn-sm">><i class="fas fa-cart-plus"></i>&nbsp;&nbsp;Continue
                                         Shopping</a>
                                 </td>
                                 <td colspan="2"><b>Grand Total</b></td>

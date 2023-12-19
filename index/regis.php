@@ -3,7 +3,40 @@ if (!empty($_SESSION)) {
 } else {
     session_start();
 }
+include '../config/panggil2.php';
+    
+    $check = "SELECT * FROM user ORDER BY id DESC";
+    $c1 = $proses->sqlAction($check);
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $nama = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
+        $password = filter_input(INPUT_POST, "password", FILTER_VALIDATE_INT);
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+
+        $sql1 = "SELECT * FROM user";
+        $result = $proses->sqlAction($sql1);
+
+
+        if (empty($nama)) {
+            echo "<script>alert('masukan nama / nama atau password telah di ambil')</script>";
+        } else if (empty($password)) {
+            echo "<script>alert('masukan password / nama atau password telah di ambil')</script>";
+        } else {
+                $sql4 = "INSERT INTO user (username, password) VALUES (:username, :hash)";
+                $stmt = $proses->getDb()->prepare($sql4);
+                $stmt->bindParam(':username', $nama);
+                $stmt->bindParam(':hash', $hash);
+
+                if ($stmt->execute()) {
+                    echo "Berhasil";
+                    echo "<script>window.location='masuk.php';</script>";
+                } else {
+                    echo "Gagal menambahkan data";
+                }
+        }
+    }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,9 +44,10 @@ if (!empty($_SESSION)) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style/log.css" />
+    <link rel="stylesheet" href="log.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../style/regis.css">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.all.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.9.0/dist/sweetalert2.min.css" rel="stylesheet">
@@ -25,7 +59,7 @@ if (!empty($_SESSION)) {
             }
 
             .login {
-                height: 370px;
+                height: 400px;
                 width: 350px;
             }
 
@@ -61,19 +95,21 @@ if (!empty($_SESSION)) {
             <div class="wrap">
                 <div class="login">
                     <div class="gambar">
-                        <img src="image/illus-1.png" />
+                        <img src="../image/illus-1.png" />
                     </div>
                     <div class="wcm">
-                        <h1 style="margin-top: 10px">LOGIN</h1>
+                        <h1 style="margin-top: 10px">Sign Up</h1>
                     </div>
                     <div class="form">
-                        <p><?php ?></p>
                         <p>Username :</p>
                         <input type="text" name="username" placeholder="Your name"><br>
                         <br>
                         <p>Password :</p>
                         <input type="password" name="password"><br>
                         <div class="sign-up">
+                            <a href="masuk.php">
+                                <h5>Already have an account?</h5>
+                            </a>
                         </div>
                         <input type="submit" name="submit"><br>
                     </div>
@@ -84,38 +120,3 @@ if (!empty($_SESSION)) {
 </body>
 
 </html>
-<?php
-include 'config/panggil2.php';
-
-if (isset($_POST['submit'])) {
-    $user = strip_tags($_POST['username']);
-    $pass = strip_tags($_POST['password']);
-    $level = strip_tags($_POST['role']);
-
-    $tabel = 'user';
-    
-    $sql= "SELECT * FROM user WHERE username = '$user'";
-    $login = $proses->showList($sql);
-
-    $redir_admin = "pages/admin/admin.html";
-
-    if( password_verify($pass, $login['password']) ){
-        if($login['role']=="admin"){
-            session_start();
-            $_SESSION['role'] = 'admin';
-            $_SESSION['sesi'] = $login;
-            echo "<script>window.location='indexx.php?page=admin';</script>";
-        }elseif($login['role']=="user"){
-            session_start();
-            $_SESSION['role'] = 'user';
-            $_SESSION['sesi'] = $login;
-            echo "<script>window.location='indexx.php?page=home page';</script>";
-        }else{
-            echo '<script>window.location="masuk.php?get=gagal"</script>';
-            }
-    }
-    else{
-    echo '<script>window.location="masuk.php?get=gagal"</script>';
-    }
-}
-?>

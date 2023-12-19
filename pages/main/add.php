@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="ad.css" />
+    <link rel="stylesheet" href="../../ad.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../../style/add.css">
@@ -38,7 +38,7 @@
     </div>
     <?php
 
-    include '../../config/panggil2.php';
+    include '../../config/panggil3.php';
     
     $check = "SELECT * FROM ketersediaan ORDER BY id DESC";
     $c1 = $proses->sqlAction($check);
@@ -78,7 +78,7 @@
 
                 if ($stmt->execute()) {
                     echo "Berhasil";
-                    echo "<script>window.location='../../indexx.php?page=admin';</script>";
+                    echo "<script>window.location='../../index/indexx.php?page=admin';</script>";
                 } else {
                     echo "Gagal menambahkan data";
                 }

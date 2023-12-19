@@ -1,6 +1,6 @@
 <?php
    include 'dbin.php';
-   include 'function/proses.php';
+   include '../function/proses.php';
    
    $db = new koneksi;
    $koneksi = $db->DBconnect();

@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add-to-cart'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home page</title>
-    <link rel="stylesheet" href="../../../onstore/style/home.css" />
+    <link rel="stylesheet" href="../style/home.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -74,13 +74,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add-to-cart'])) {
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block" src="image/chris-reyem-oJoeGnj8OMM-unsplash.jpg" alt="First slide">
+                <img class="d-block" src="../image/chris-reyem-oJoeGnj8OMM-unsplash.jpg" alt="First slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block" src="image/lucas-hoang-ojZ4wJNUM5w-unsplash.jpg" alt="Second slide">
+                <img class="d-block" src="../image/lucas-hoang-ojZ4wJNUM5w-unsplash.jpg" alt="Second slide">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="image/parker-burchfield-tvG4WvjgsEY-unsplash.jpg" alt="Third slide">
+                <img class="d-block w-100" src="../image/parker-burchfield-tvG4WvjgsEY-unsplash.jpg" alt="Third slide">
             </div>
         </div>
     </div>
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add-to-cart'])) {
                         <div class="card" style="border : 0;">
                          <!--   <button type="submit" class="btn btn-transparent" name="item-profile">-->
                                 <div class=" view zoom">
-                                    <img src="image/<?php echo $x['foto']; ?>" alt="" class="img-fluit rounded-top" />
+                                    <img src="../image/<?php echo $x['foto']; ?>" alt="" class="img-fluit rounded-top" />
                                 </div>
                                 <div class="card-body" style="padding:5px;">
                                     <h5 class="card-title" style="margin-bottom:1px; text-align:start;"><?= $x['nama'] ?></h5>

@@ -1,5 +1,11 @@
 <?php
-require 'config/panggil2.php';
+ include 'config/dbin.php';
+ include 'function/proses.php';
+ 
+ $db = new koneksi;
+ $koneksi = $db->DBconnect();
+ $proses = new Proses($koneksi);
+
 $sql1 = "SELECT * FROM ketersediaan";
 $hasil = $proses->list($sql1);
 ?>
@@ -115,7 +121,7 @@ $hasil = $proses->list($sql1);
     <div class="login-foot">
         <div class="judul-foot">
             <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
-            <a href="regis.php"><button class="btn btn-primary font-weight-bold mt-4">Get started</button></a>
+            <a href="index/regis.php"><button class="btn btn-primary font-weight-bold mt-4">Get started</button></a>
         </div>
     </div>
     <br>
